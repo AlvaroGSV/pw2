@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Peddana&display=swap');
+
+@font-face{
+    font-family: 'Oswald';
+    src: url(Oswald/static/Oswald-Regular.ttf);
+}
+
+body {
+    margin: 0 auto;
+    max-width: 1024px;
+    background: #b4d9db;
+    font-family: 'Oswald';
+}
+
+body header {
+    background: #45898c;
+    color: #FFF;
+    text-align: center;
+    padding: 10px;
+}
+
+body header h1 {
+    margin: 0 auto;
+    font-weight: 700;
+    font-size: 30px;
+    text-shadow: 5px 5px grey;
+    font-family: 'Peddana', serif;
+}
+body header nav ul{
+    background: #000;
+}
+
+body header nav ul li {
+    display: inline-block; /*rompa la caja*/
+    background: #000;
+    color: #FFF;
+    margin: 0 15px;
+    padding: 5px;
+}
+
+body header nav ul li:hover {
+    color: #000;
+    background: #FFF;
+}
+
+footer {
+    background: #45898c;
+    height: 50px;
+    text-align: ;
+}
+
+#seccion1 {
+    background: #FFF;
+    border: 3px solid #000;
+}
+
+#seccion1 article {
+    display: inline-block;
+    border: 2px solid red;
+    vertical-align: top;
+}
+
+#articulo1 {
+    width: 80%;
+}
+
+#articulo2 {
+    width: 18%;
+}
+
+
