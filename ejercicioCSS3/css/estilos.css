@@ -21,6 +21,147 @@ header nav ul li {
     border-bottom: 2px solid
 }
 
+aside {
+    width: 25%;
+    vertical-align: top;
+    position: absolute;
+    top: 230px;
+    right: 10px;
+}
+
+
+footer {
+    background: #4364b0;
+    color: white;
+    font-size: 12px;
+    padding: 40px 20px 10px;
+    font-weight: 600;
+    margin-top: 40px;
+}
+
+footer div {
+    display: inline-block;
+}
+
+.copy {
+    width: 38%;
+}
+
+.other {
+    text-align: center;
+    width: 36%;
+    margin-left: 20px;
+}
+
+.html5{
+    width: 22%;
+    text-align: end;
+}
+
+.html5 span {
+   background: inherit;
+   border-radius: 15px; 
+   border: 2px solid white;
+   color: inherit;
+   padding: 5px 7px;
+}
+
+.offer h3 {
+    font-size: 44px;
+    font-weight: 900;
+    margin: 0 0 10px;
+}
+
+.offer ul{
+    padding: 0 12px;
+}
+.offer ul li {
+    line-height: 1.6;
+    font-weight: 100;
+}
+
+.telefono {
+    font-size: 30px;
+    font-weight: 900;
+    margin: 40px 0 50px;
+}
+
+.contacto h4 {
+    font-size: 22px;
+    margin: 0;
+    font-weight: 100;
+}
+
+.contacto p {
+    font-size: 14px;
+    margin: 5px 0 10px;
+}
+
+.seccion1, .seccion2 {
+    display: inline-block;
+    width: 73%;
+}
+
+.seccion1 {
+    text-align: center;
+    position: relative;
+}
+
+.seccion2 {
+    margin: 20px 0;
+}
+
+.seccion2 article {
+    display: inline-block;
+    width: 30%;
+    vertical-align: top;
+    margin: 0 10px;
+}
+
+.seccion2 article h3 {
+    margin: 0;
+    display: inline-block;
+    font-size: 18px;
+    vertical-align: top;
+    padding: 25px 0;
+}
+
+.seccion2 article p {
+    font-size: 14px;
+}
+
+.seccion2 img{
+    width: 60px;
+}
+
+.seccion2 a {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.rosa {
+    color: #ea078d;
+}
+
+.verde {
+ color: #93c710;
+}
+
+.azul{
+ color: #6199d4;
+}
+
+#bgoffer {
+    position: absolute;
+    top: -85px;
+    left: -42px;
+}
+
+#slide {
+    width: 95%;
+}
+
 #logo {
     margin: 30px 0 0 20px;
 }
@@ -40,4 +181,22 @@ header nav ul li {
     right: 0;
     top: 15px;
     z-index: -1;
+}
+
+#email {
+    padding: 3px;
+    width: 140px;
+    font-size: 16px;
+}
+
+#enviar {
+    padding: 3px;
+    width: 60px;
+    font-size: 16px;
+    font-weight: 800;
+    background: #93c710;
+    color: #ffffff;
+    border-style: solid;
+    border-color: #93c710;
+    border-radius: 5px;
 }
