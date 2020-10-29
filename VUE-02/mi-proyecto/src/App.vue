@@ -1,19 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld :msg="titulo" fecha="2020-10-28"/>
+  <div>
+    <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld :msg="titulo" fecha="2020-10-28"/>
+    <ListaElemento titulo="Mi inventario de frutas" :elementos="frutas" />
+  </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import ListaElemento from './components/ListaElementos.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    ListaElemento
   },
   data(){
     return {
-      titulo: 'Hola con data'
+      titulo: 'Mis frutas',
+      frutas: [
+        { id: 1,nombre: 'Manzana', cantidad: 10 },
+        { id: 2, nombre: 'Uva', cantidad: 7 },
+        { id: 3, nombre: 'Pera', cantidad: 4 }
+      ]
     }
   }
 }
