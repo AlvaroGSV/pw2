@@ -6,12 +6,15 @@ const express = require('express')
  //Configuración
  app.set('port', process.env.PORT || 3000)
 
- //Rutas
+ //Middleware
+ app.use(express.json());
+ app.use(express.urlencoded({ extended: true }))
 
- app.get('/', (req, res) => {
-     console.log("Se envio mensaje");
-      res.json({ mensaje: "Hola a todos"})
- })
+ //Base de datos
+ require('./config/connection');
+
+ //Rutas
+app.use(require('./routes/personasRoute'));
 
  //Levantar el servidor
  app.listen(app.get('port'), (error) => {
