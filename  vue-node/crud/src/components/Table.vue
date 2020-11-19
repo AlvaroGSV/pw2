@@ -13,7 +13,9 @@
 export default {
     name: 'Table',
     props: {
-        items: Array,
+        items: {
+            type: Array
+        },
         fields: Array
     }
 }
