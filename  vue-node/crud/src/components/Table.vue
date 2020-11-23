@@ -5,7 +5,11 @@
             bordered 
             :items="items"
             :fields="fields"
-        ></b-table>
+        >
+            <template #cell(actions)="data">
+                <slot name="actions" :item="data"></slot>
+            </template>
+        </b-table>
   </div>
 </template>
 

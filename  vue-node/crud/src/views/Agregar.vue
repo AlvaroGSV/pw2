@@ -7,6 +7,9 @@
                label="Nombre"
                id="nombre"
                placeholder="Ingrese nombre de la persona"
+               mensajeError="El nombre es obligatorio"
+               :error="erroresValidacion && !validacionNombre"
+               class="mb-2"
             />
              <Input
                v-model="persona.direccion"
@@ -14,6 +17,7 @@
                id="direccion"
                maxlength="150"
                placeholder="Ingrese la dirección de la persona"
+               class="mb-2"
             />
              <Input
                v-model="persona.telefono"
@@ -43,22 +47,47 @@ export default {
                 nombre: '',
                 direccion: '',
                 telefono: ''
-            }
+            },
+            erroresValidacion: false
         }
     },
+    computed: {
+        validacionNombre() {
+            return (
+                this.persona.nombre !== undefined &&
+                this.persona.nombre.trim() !== ''
+            )    
+        }
+    }, 
     methods: {
         ...mapActions(['crearPersona']),
         guardarPersona() {
-            console.log(this.persona);
-            this.crearPersona({
-                params: this.persona,
-                onComplete: (response) => {
-                    console.log(response)
-                    this.$router.push({
-                        name: 'Home'
-                    })
-                }
-            })
+            if(this.validacionNombre) {
+                this.erroresValidacion = false
+                console.log(this.persona);
+                this.crearPersona({
+                    params: this.persona,
+                    onComplete: (response) => {
+                        console.log(response)
+                        this.$notify({
+                            type: 'success',
+                            title: response.data.mensaje,
+                        });
+
+                        this.$router.push({
+                            name: 'Home'
+                        })
+                    },
+                    onError: (error) => {
+                        this.$notify({
+                            type: 'error',
+                            title: error.response.data.mensaje,
+                        });
+                    }
+                })
+            } else {
+                this.erroresValidacion = true
+            }
         }
     }
 }

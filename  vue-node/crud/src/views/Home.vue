@@ -8,7 +8,17 @@
         >
             Agregar
         </b-button>
-    <Table :fields="campos" :items="allPersonas"/>
+    <Table :fields="campos" :items="allPersonas">
+        <template slot="actions" slot-scope="{ item } ">
+            <b-button
+              size="sm"
+              variant="outline-primary"
+              @click="onEditar(item)"
+            >
+              Editar
+            </b-button>
+        </template>
+    </Table>
   </div>
 </template>
 
@@ -26,14 +36,17 @@ export default {
       campos: [
         { key: 'id', label: 'Clave'},
         { key: 'nombre', label: 'Nombre'},
-        { key: 'direccion', label: 'Dirección'},
+        { key: 'direccion', label: 'Dirección', formatter: value => {
+            return value || "Sin información"
+          }},
         { 
           key: 'telefono', 
           label: 'Teléfono',
           formatter: value => {
             return value || "Sin información"
           }
-        }
+        },
+        { key: 'actions', label: 'Acciones'},
       ]
     }
   },
@@ -41,7 +54,10 @@ export default {
     ...mapGetters(['allPersonas'])
   },
   methods: {
-    ...mapActions(['setPersonas'])
+    ...mapActions(['setPersonas']),
+    onEditar(item) {
+      console.log(item);
+    }
   },
   created() {
     this.setPersonas();

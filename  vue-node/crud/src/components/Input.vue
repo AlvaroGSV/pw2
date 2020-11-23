@@ -11,6 +11,7 @@
         :placeholder="placeholder"
         @input="$emit('input', $event.target.value)"
       />
+      <span v-if="error" class="text-danger">{{mensajeError}}</span>
   </div>
 </template>
 
@@ -45,6 +46,14 @@ export default {
         placeholder: {
             type: String,
             default: 'Ingrese campo'
+        },
+        mensajeError: {
+            type: String,
+            default: 'Campo obligatorio'
+        },
+        error: {
+            type: Boolean,
+            default: false
         }
     }
 
