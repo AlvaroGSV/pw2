@@ -25,7 +25,17 @@ export default new Vuex.Store({
       axios.post('http://localhost:3000/', params)
       .then(onComplete)
       .catch(onError)
-    }
+    },
+    obtenerPersona({commit}, { id, onComplete, onError}) {
+      axios.get(`http://localhost:3000/${id}`)
+      .then(onComplete)
+      .catch(onError)
+    },
+    editarPersona({commit}, {id, params, onComplete, onError}) {
+      axios.put(`http://localhost:3000/${id}`, params)
+      .then(onComplete)
+      .catch(onError)
+    },
   },
   getters: {
     allPersonas: state => {

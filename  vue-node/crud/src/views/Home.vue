@@ -17,6 +17,15 @@
             >
               Editar
             </b-button>
+
+            <b-button
+              size="sm"
+              class="ml-2"
+              variant="outline-danger"
+              @click="onEditar(item)"
+            >
+              Eliminar
+            </b-button>
         </template>
     </Table>
   </div>
@@ -57,6 +66,12 @@ export default {
     ...mapActions(['setPersonas']),
     onEditar(item) {
       console.log(item);
+      this.$router.push({
+        name: 'Editar',
+        params: {
+          id: item.item.id
+        }
+      })
     }
   },
   created() {
