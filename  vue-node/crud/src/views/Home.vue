@@ -8,7 +8,7 @@
         >
             Agregar
         </b-button>
-    <Table :fields="campos" :items="allPersonas">
+    <Table :fields="campos" :items="allPersonas" :busy="getLoading">
         <template slot="actions" slot-scope="{ item } ">
             <b-button
               size="sm"
@@ -22,7 +22,7 @@
               size="sm"
               class="ml-2"
               variant="outline-danger"
-              @click="onEditar(item)"
+              @click="onEliminar(item)"
             >
               Eliminar
             </b-button>
@@ -60,10 +60,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['allPersonas'])
+    ...mapGetters(['allPersonas', 'getLoading'])
   },
   methods: {
-    ...mapActions(['setPersonas']),
+    ...mapActions(['setPersonas', 'eliminarPersona']),
     onEditar(item) {
       console.log(item);
       this.$router.push({
@@ -72,9 +72,47 @@ export default {
           id: item.item.id
         }
       })
+    },
+    onEliminar(item) {
+      console.log(item);
+
+      this.$bvModal.msgBoxConfirm('Esta opción no se puede deshacer', {
+          title: '¿Esta seguro que desea eliminar?',
+          buttonSize: 'sm',
+          okVariant: 'danger',
+          okTitle: 'Aceptar',
+          cancelTitle: 'Cancelar',
+          centered: true
+        })
+          .then(value => {
+            if(value) {
+
+              this.eliminarPersona({
+                id: item.item.id,
+                onComplete: (response) => {
+                  this.$notify({
+                    type: 'success',
+                    title: response.data.mensaje
+                  })
+                  setTimeout(() => this.setPersonas(), 1000)
+                },
+                onError: (error) => {
+                  this.$notify({
+                    type: 'error',
+                    title: error.response.data.mensaje
+                  })
+                }
+              })
+            }
+          })
+          .catch(err => {
+            // An error occurred
+          })
+
+
     }
   },
-  created() {
+  mounted() {
     this.setPersonas();
   }
 }
